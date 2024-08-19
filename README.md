@@ -1,2 +1,2 @@
 # test-tiber
-Tibet PoC (BCP)
+Tiber PoC (BCP)
