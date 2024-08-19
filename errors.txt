@@ -1,0 +1,25 @@
+COMMAND TO RUN
+=============
+
+GDB=1 SGX=1 go run main.go 
+
+
+SIGSEGV: segmentation violation
+PC=0xc00039dbc0 m=0 sigcode=2 addr=0xc00039dbc0
+signal arrived during cgo execution
+
+goroutine 1 gp=0xc000006380 m=0 mp=0x9a1140 [syscall]:
+runtime.cgocall(0x6a7c10, 0xc000027c28)
+        /usr/local/go/src/runtime/cgocall.go:167 +0x4b fp=0xc000027c00 sp=0xc000027bc8 pc=0x46718b
+my-go-project/sgx._Cfunc_get_report(0xc00039dbc0, 0x3039, 0xc0000152c0, 0xc0004c8000, 0xc02190, 0x75, 0xc0004ca000)
+        _cgo_gotypes.go:210 +0x4b fp=0xc000027c28 sp=0xc000027c00 pc=0x6a6b8b
+my-go-project/sgx.(*sgxAdapter).CollectEvidence(0xc000159b00, {0xc000114840, 0x75, 0xc0})
+        /home/azureuser/tibet/sgx/sgx_adapter.go:74 +0x155 fp=0xc000027ce8 sp=0xc000027c28 pc=0x6a7075
+github.com/intel/trustauthority-client/go-connector.(*trustAuthorityConnector).Attest(0xc0000162d0, {{0x7b6060, 0xc000159b00}, {0x0, 0x0, 0x0}, {0x0, 0x0}})
+        /home/azureuser/go/pkg/mod/github.com/intel/trustauthority-client/go-connector@v0.0.0-20230915183507-c9c456cb06d1/attest.go:22 +0x162 fp=0xc000027da8 sp=0xc000027ce8 pc=0x6a4842
+main.main()
+        /home/azureuser/tibet/main_2.go:69 +0x542 fp=0xc000027f50 sp=0xc000027da8 pc=0x6a7ae2
+runtime.main()
+        /usr/local/go/src/runtime/proc.go:272 +0x28b fp=0xc000027fe0 sp=0xc000027f50 pc=0x43986b
+runtime.goexit({})
+        /usr/local/go/src/runtime/asm_amd64.s:1700 +0x1 fp=0xc000027fe8 sp=0xc000027fe0 pc=0x474941
